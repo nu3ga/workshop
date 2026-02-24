@@ -16,6 +16,7 @@ import {
   User 
 } from 'lucide-react';
 import Footer from '../components/Footer';
+import Logo from '../components/Logo';
 
 export default function Home() {
   return (
@@ -27,9 +28,8 @@ export default function Home() {
             <Link to="/menu" className="p-2 -ml-2 text-slate-700 hover:bg-slate-100 rounded-full transition-colors md:hidden">
               <Menu className="w-6 h-6" />
             </Link>
-            <Link to="/" className="flex flex-col">
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-orange-600">Industrial</span>
-              <span className="text-xl md:text-2xl font-black leading-none tracking-tight text-slate-900">Safety Gear</span>
+            <Link to="/" className="flex items-center text-slate-900">
+              <Logo className="h-8 md:h-10 w-auto" />
             </Link>
             
             {/* Desktop Navigation */}

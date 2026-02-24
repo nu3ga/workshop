@@ -14,15 +14,15 @@ import {
   Truck,
   RotateCcw
 } from 'lucide-react';
+import Logo from '../components/Logo';
 
 export default function Menu() {
   return (
     <div className="min-h-screen bg-slate-900 text-white flex flex-col max-w-md mx-auto font-sans">
       {/* Header */}
       <div className="flex items-center justify-between p-6 border-b border-white/10">
-        <div className="flex flex-col">
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-orange-500">Industrial</span>
-          <span className="text-xl font-black leading-none tracking-tight">Safety Gear</span>
+        <div className="flex items-center text-white">
+          <Logo className="h-8 w-auto" />
         </div>
         <Link to="/" className="size-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-all active:scale-90">
           <X className="w-5 h-5" />
@@ -66,6 +66,15 @@ export default function Menu() {
             </div>
             <span className="text-lg font-bold">Mans Profils</span>
             <ChevronRight className="w-4 h-4 ml-auto text-white/20 group-hover:text-orange-500 transition-all" />
+          </Link>
+          
+          {/* Admin Link (Temporary for Dev) */}
+          <Link to="/admin" className="flex items-center gap-4 p-4 rounded-2xl hover:bg-white/5 transition-all group border border-orange-500/20 bg-orange-500/5">
+            <div className="size-10 flex items-center justify-center rounded-xl bg-orange-500/10 group-hover:bg-orange-600/20 group-hover:text-orange-500 transition-all text-orange-500">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
+            <span className="text-lg font-bold text-orange-500">Admin Dashboard</span>
+            <ChevronRight className="w-4 h-4 ml-auto text-orange-500/50 group-hover:text-orange-500 transition-all" />
           </Link>
         </nav>
 

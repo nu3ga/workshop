@@ -19,6 +19,14 @@ import Filters from './pages/Filters';
 import ForgotPassword from './pages/ForgotPassword';
 import Contact from './pages/Contact';
 import TextPage from './pages/TextPage';
+import AdminDashboard from './pages/admin/Dashboard';
+import Products from './pages/admin/Products';
+import Orders from './pages/admin/Orders';
+import Customers from './pages/admin/Customers';
+import Analytics from './pages/admin/Analytics';
+import AdminSettings from './pages/admin/Settings';
+import ProductEditor from './pages/admin/ProductEditor';
+import AdminOrderDetail from './pages/admin/OrderDetail';
 
 function AppContent() {
   const location = useLocation();
@@ -40,7 +48,8 @@ function AppContent() {
     '/privacy',
     '/about',
     '/shipping',
-    '/returns'
+    '/returns',
+    '/admin'
   ];
   const shouldShowBottomNav = !hideBottomNavPaths.some(path => location.pathname.startsWith(path));
 
@@ -71,6 +80,15 @@ function AppContent() {
           <Route path="/about" element={<TextPage title="Par Mums" type="about" />} />
           <Route path="/shipping" element={<TextPage title="Piegāde" type="shipping" />} />
           <Route path="/returns" element={<TextPage title="Atgriešana" type="returns" />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/products" element={<Products />} />
+          <Route path="/admin/products/new" element={<ProductEditor />} />
+          <Route path="/admin/products/:id" element={<ProductEditor />} />
+          <Route path="/admin/orders" element={<Orders />} />
+          <Route path="/admin/orders/:id" element={<AdminOrderDetail />} />
+          <Route path="/admin/customers" element={<Customers />} />
+          <Route path="/admin/analytics" element={<Analytics />} />
+          <Route path="/admin/settings" element={<AdminSettings />} />
         </Routes>
         {shouldShowBottomNav && (
           <div className="md:hidden">

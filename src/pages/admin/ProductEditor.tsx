@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { 
   Save, 
   X, 
@@ -37,6 +38,7 @@ const FormGroup = ({ label, children, helpText }: { label: string, children: Rea
 );
 
 export default function ProductEditor() {
+  const navigate = useNavigate();
   const [images, setImages] = useState<string[]>(['https://picsum.photos/seed/glove/400/400']);
 
   return (
@@ -58,10 +60,16 @@ export default function ProductEditor() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <button className="px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold text-sm hover:bg-slate-50">
+            <button 
+              onClick={() => navigate('/admin/products')}
+              className="px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold text-sm hover:bg-slate-50"
+            >
               Discard
             </button>
-            <button className="px-6 py-2 rounded-xl bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center">
+            <button 
+              onClick={() => navigate('/admin/products')}
+              className="px-6 py-2 rounded-xl bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center"
+            >
               <Save className="w-4 h-4 mr-2" />
               Save Product
             </button>

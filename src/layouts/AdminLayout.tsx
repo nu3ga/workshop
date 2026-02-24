@@ -13,7 +13,10 @@ import {
   X,
   LogOut,
   ChevronDown,
-  HelpCircle
+  HelpCircle,
+  Tag,
+  ClipboardList,
+  Megaphone
 } from 'lucide-react';
 import Logo from '../components/Logo';
 
@@ -28,8 +31,11 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const navigation = [
     { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
     { name: 'Products', href: '/admin/products', icon: Package },
+    { name: 'Inventory', href: '/admin/inventory', icon: ClipboardList },
     { name: 'Orders', href: '/admin/orders', icon: ShoppingCart },
     { name: 'Customers', href: '/admin/customers', icon: Users },
+    { name: 'Discounts', href: '/admin/discounts', icon: Tag },
+    { name: 'Marketing', href: '/admin/marketing', icon: Megaphone },
     { name: 'Analytics', href: '/admin/analytics', icon: BarChart3 },
     { name: 'Settings', href: '/admin/settings', icon: Settings },
   ];

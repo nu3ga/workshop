@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Search, 
   Filter, 
@@ -98,6 +99,17 @@ const StatusBadge = ({ status }: { status: string }) => {
 };
 
 export default function Customers() {
+  const [selectedCustomers, setSelectedCustomers] = useState<number[]>([]);
+  const navigate = useNavigate();
+
+  const toggleSelect = (id: number) => {
+    if (selectedCustomers.includes(id)) {
+      setSelectedCustomers(selectedCustomers.filter(cid => cid !== id));
+    } else {
+      setSelectedCustomers([...selectedCustomers, id]);
+    }
+  };
+
   return (
     <AdminLayout>
       <div className="space-y-8 pb-12 max-w-[1600px] mx-auto">
@@ -113,7 +125,10 @@ export default function Customers() {
               <Download className="mr-2 h-4 w-4" />
               Export
             </button>
-            <button className="inline-flex items-center justify-center rounded-xl text-sm font-bold transition-all bg-orange-600 text-white hover:bg-orange-500 h-11 py-2 px-5 shadow-[0_4px_14px_0_rgba(234,88,12,0.39)] hover:shadow-[0_6px_20px_rgba(234,88,12,0.23)] hover:-translate-y-0.5">
+            <button 
+              onClick={() => navigate('/admin/customers/new')}
+              className="inline-flex items-center justify-center rounded-xl text-sm font-bold transition-all bg-orange-600 text-white hover:bg-orange-500 h-11 py-2 px-5 shadow-[0_4px_14px_0_rgba(234,88,12,0.39)] hover:shadow-[0_6px_20px_rgba(234,88,12,0.23)] hover:-translate-y-0.5"
+            >
               <UserPlus className="mr-2 h-5 w-5" />
               Add Customer
             </button>
@@ -181,9 +196,22 @@ export default function Customers() {
               </thead>
               <tbody className="divide-y divide-slate-50">
                 {customers.map((customer) => (
-                  <tr key={customer.id} className="hover:bg-slate-50/80 transition-colors group cursor-pointer">
+                  <tr 
+                    key={customer.id} 
+                    onClick={(e) => {
+                      // Prevent navigation if clicking checkbox or action buttons
+                      if ((e.target as HTMLElement).closest('input') || (e.target as HTMLElement).closest('button')) return;
+                      navigate(`/admin/customers/${customer.id}`);
+                    }}
+                    className="hover:bg-slate-50/80 transition-colors group cursor-pointer"
+                  >
                     <td className="px-6 py-4">
-                      <input type="checkbox" className="rounded border-slate-300 text-orange-600 focus:ring-orange-500" />
+                      <input 
+                        type="checkbox" 
+                        checked={selectedCustomers.includes(customer.id)}
+                        onChange={() => toggleSelect(customer.id)}
+                        className="rounded border-slate-300 text-orange-600 focus:ring-orange-500" 
+                      />
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">

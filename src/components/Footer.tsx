@@ -35,6 +35,7 @@ export default function Footer() {
             <li><Link to="/catalog" className="hover:text-orange-500 transition-colors">Katalogs</Link></li>
             <li><Link to="/advice" className="hover:text-orange-500 transition-colors">Ekspertu Padomi</Link></li>
             <li><Link to="/b2b" className="hover:text-orange-500 transition-colors">B2B Klientiem</Link></li>
+            <li><Link to="/stores" className="hover:text-orange-500 transition-colors">Veikali</Link></li>
             <li><Link to="/about" className="hover:text-orange-500 transition-colors">Par Mums</Link></li>
           </ul>
         </div>
@@ -43,6 +44,7 @@ export default function Footer() {
         <div>
           <h3 className="text-white font-bold mb-4">Atbalsts</h3>
           <ul className="space-y-2 text-sm">
+            <li><Link to="/faq" className="hover:text-orange-500 transition-colors">BUJ</Link></li>
             <li><Link to="/shipping" className="hover:text-orange-500 transition-colors">Piegāde</Link></li>
             <li><Link to="/returns" className="hover:text-orange-500 transition-colors">Atgriešana</Link></li>
             <li><Link to="/privacy" className="hover:text-orange-500 transition-colors">Privātuma Politika</Link></li>

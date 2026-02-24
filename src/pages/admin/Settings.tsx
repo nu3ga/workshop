@@ -152,14 +152,188 @@ export default function Settings() {
               </SettingsSection>
             )}
 
-            {/* Placeholders for other tabs */}
-            {['shipping', 'taxes', 'users', 'notifications'].includes(activeTab) && (
-              <div className="flex flex-col items-center justify-center py-20 bg-white rounded-[2rem] border border-slate-200/60 border-dashed">
-                <div className="p-4 bg-slate-50 rounded-full mb-4">
-                  <Lock className="w-8 h-8 text-slate-400" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900">Section Under Construction</h3>
-                <p className="text-slate-500 font-medium mt-1">This settings panel is coming soon.</p>
+            {activeTab === 'shipping' && (
+              <div className="space-y-6">
+                <SettingsSection title="Shipping Zones" description="Manage where you ship and how much it costs.">
+                  <div className="space-y-4">
+                    <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className="h-10 w-10 bg-white rounded-lg shadow-sm flex items-center justify-center text-slate-500">
+                          <Globe className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-slate-900">Domestic (EU)</h4>
+                          <p className="text-sm text-slate-500 font-medium">Germany, France, Italy, Spain...</p>
+                        </div>
+                      </div>
+                      <button className="text-sm font-bold text-orange-600 hover:text-orange-700">Edit Zone</button>
+                    </div>
+                    <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className="h-10 w-10 bg-white rounded-lg shadow-sm flex items-center justify-center text-slate-500">
+                          <Globe className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-slate-900">International (Rest of World)</h4>
+                          <p className="text-sm text-slate-500 font-medium">United States, Canada, Australia...</p>
+                        </div>
+                      </div>
+                      <button className="text-sm font-bold text-orange-600 hover:text-orange-700">Edit Zone</button>
+                    </div>
+                    <button className="w-full py-3 rounded-xl border-2 border-dashed border-slate-200 text-slate-500 font-bold hover:border-orange-500 hover:text-orange-600 hover:bg-orange-50 transition-all flex items-center justify-center">
+                      <Plus className="w-4 h-4 mr-2" />
+                      Add Shipping Zone
+                    </button>
+                  </div>
+                </SettingsSection>
+
+                <SettingsSection title="Delivery Methods" description="Enable local pickup or local delivery.">
+                  <div className="space-y-4">
+                    <label className="flex items-center justify-between p-4 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
+                      <div className="flex items-center gap-4">
+                        <div className="h-10 w-10 bg-white rounded-lg shadow-sm flex items-center justify-center text-slate-500">
+                          <Store className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-slate-900">Local Pickup</h4>
+                          <p className="text-sm text-slate-500 font-medium">Allow customers to pick up orders from your store.</p>
+                        </div>
+                      </div>
+                      <input type="checkbox" className="w-5 h-5 rounded border-slate-300 text-orange-600 focus:ring-orange-500" />
+                    </label>
+                  </div>
+                </SettingsSection>
+              </div>
+            )}
+
+            {activeTab === 'taxes' && (
+              <div className="space-y-6">
+                <SettingsSection title="Tax Calculation" description="Manage how taxes are charged.">
+                  <div className="space-y-4">
+                    <label className="flex items-center gap-3 p-4 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
+                      <input type="checkbox" className="w-5 h-5 rounded border-slate-300 text-orange-600 focus:ring-orange-500" defaultChecked />
+                      <div>
+                        <h4 className="font-bold text-slate-900">All prices include tax</h4>
+                        <p className="text-sm text-slate-500 font-medium">Taxes are calculated using this formula: (Price / (1 + Tax Rate)) * Tax Rate</p>
+                      </div>
+                    </label>
+                    <label className="flex items-center gap-3 p-4 rounded-xl border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
+                      <input type="checkbox" className="w-5 h-5 rounded border-slate-300 text-orange-600 focus:ring-orange-500" />
+                      <div>
+                        <h4 className="font-bold text-slate-900">Charge tax on shipping rates</h4>
+                        <p className="text-sm text-slate-500 font-medium">Apply local tax rates to shipping costs.</p>
+                      </div>
+                    </label>
+                  </div>
+                </SettingsSection>
+
+                <SettingsSection title="Tax Regions" description="Set tax rates for specific countries or regions.">
+                  <div className="space-y-4">
+                    <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className="h-10 w-10 bg-white rounded-lg shadow-sm flex items-center justify-center text-slate-500">
+                          <Globe className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-slate-900">European Union</h4>
+                          <p className="text-sm text-slate-500 font-medium">One Stop Shop (OSS) rates apply</p>
+                        </div>
+                      </div>
+                      <span className="font-bold text-slate-900">Varies</span>
+                    </div>
+                    <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className="h-10 w-10 bg-white rounded-lg shadow-sm flex items-center justify-center text-slate-500">
+                          <Globe className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-slate-900">United Kingdom</h4>
+                          <p className="text-sm text-slate-500 font-medium">20% VAT</p>
+                        </div>
+                      </div>
+                      <span className="font-bold text-slate-900">20%</span>
+                    </div>
+                  </div>
+                </SettingsSection>
+              </div>
+            )}
+
+            {activeTab === 'users' && (
+              <div className="space-y-6">
+                <SettingsSection title="Staff Accounts" description="Manage who has access to your admin dashboard.">
+                  <div className="space-y-4">
+                    <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className="h-10 w-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-700 font-bold">
+                          JD
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-slate-900">John Doe (You)</h4>
+                          <p className="text-sm text-slate-500 font-medium">Owner • john@example.com</p>
+                        </div>
+                      </div>
+                      <span className="px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-wider">Active</span>
+                    </div>
+                    <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold">
+                          AS
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-slate-900">Alice Smith</h4>
+                          <p className="text-sm text-slate-500 font-medium">Editor • alice@example.com</p>
+                        </div>
+                      </div>
+                      <button className="text-sm font-bold text-slate-500 hover:text-slate-900">Manage</button>
+                    </div>
+                    <button className="w-full py-3 rounded-xl border-2 border-dashed border-slate-200 text-slate-500 font-bold hover:border-orange-500 hover:text-orange-600 hover:bg-orange-50 transition-all flex items-center justify-center">
+                      <Plus className="w-4 h-4 mr-2" />
+                      Add Staff Account
+                    </button>
+                  </div>
+                </SettingsSection>
+
+                <SettingsSection title="Permissions" description="Control what staff can see and do.">
+                  <div className="p-6 rounded-xl bg-slate-50 border border-slate-200 text-center">
+                    <p className="text-slate-500 font-medium mb-4">Upgrade to the Pro plan to create custom roles and permissions.</p>
+                    <button className="px-4 py-2 bg-slate-900 text-white rounded-lg text-sm font-bold hover:bg-slate-800">View Plans</button>
+                  </div>
+                </SettingsSection>
+              </div>
+            )}
+
+            {activeTab === 'notifications' && (
+              <div className="space-y-6">
+                <SettingsSection title="Customer Notifications" description="Manage emails sent to customers.">
+                  <div className="space-y-2">
+                    {['Order Confirmation', 'Shipping Update', 'Order Delivered', 'Refund Processed'].map((item) => (
+                      <div key={item} className="flex items-center justify-between p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors">
+                        <div className="flex items-center gap-3">
+                          <Mail className="w-5 h-5 text-slate-400" />
+                          <span className="font-bold text-slate-900">{item}</span>
+                        </div>
+                        <button className="text-sm font-bold text-orange-600 hover:text-orange-700">Edit Template</button>
+                      </div>
+                    ))}
+                  </div>
+                </SettingsSection>
+
+                <SettingsSection title="Admin Notifications" description="Get alerted when important events happen.">
+                  <div className="space-y-4">
+                    <label className="flex items-center justify-between">
+                      <span className="font-bold text-slate-700">New Order Alert</span>
+                      <input type="checkbox" className="w-5 h-5 rounded border-slate-300 text-orange-600 focus:ring-orange-500" defaultChecked />
+                    </label>
+                    <label className="flex items-center justify-between">
+                      <span className="font-bold text-slate-700">Low Stock Warning</span>
+                      <input type="checkbox" className="w-5 h-5 rounded border-slate-300 text-orange-600 focus:ring-orange-500" defaultChecked />
+                    </label>
+                    <label className="flex items-center justify-between">
+                      <span className="font-bold text-slate-700">Daily Summary</span>
+                      <input type="checkbox" className="w-5 h-5 rounded border-slate-300 text-orange-600 focus:ring-orange-500" />
+                    </label>
+                  </div>
+                </SettingsSection>
               </div>
             )}
 

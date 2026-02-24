@@ -27,6 +27,22 @@ import Analytics from './pages/admin/Analytics';
 import AdminSettings from './pages/admin/Settings';
 import ProductEditor from './pages/admin/ProductEditor';
 import AdminOrderDetail from './pages/admin/OrderDetail';
+import CustomerDetail from './pages/admin/CustomerDetail';
+import Discounts from './pages/admin/Discounts';
+import Inventory from './pages/admin/Inventory';
+import Marketing from './pages/admin/Marketing';
+
+import Wishlist from './pages/Wishlist';
+import FAQ from './pages/FAQ';
+import StoreLocator from './pages/StoreLocator';
+
+import CreateOrder from './pages/admin/CreateOrder';
+import AddCustomer from './pages/admin/AddCustomer';
+import CreateDiscount from './pages/admin/CreateDiscount';
+import CreateCampaign from './pages/admin/CreateCampaign';
+import EditCustomer from './pages/admin/EditCustomer';
+import EditOrder from './pages/admin/EditOrder';
+import InventoryHistory from './pages/admin/InventoryHistory';
 
 function AppContent() {
   const location = useLocation();
@@ -80,13 +96,27 @@ function AppContent() {
           <Route path="/about" element={<TextPage title="Par Mums" type="about" />} />
           <Route path="/shipping" element={<TextPage title="Piegāde" type="shipping" />} />
           <Route path="/returns" element={<TextPage title="Atgriešana" type="returns" />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/stores" element={<StoreLocator />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/products" element={<Products />} />
           <Route path="/admin/products/new" element={<ProductEditor />} />
           <Route path="/admin/products/:id" element={<ProductEditor />} />
+          <Route path="/admin/inventory" element={<Inventory />} />
+          <Route path="/admin/inventory/history" element={<InventoryHistory />} />
           <Route path="/admin/orders" element={<Orders />} />
+          <Route path="/admin/orders/new" element={<CreateOrder />} />
           <Route path="/admin/orders/:id" element={<AdminOrderDetail />} />
+          <Route path="/admin/orders/:id/edit" element={<EditOrder />} />
           <Route path="/admin/customers" element={<Customers />} />
+          <Route path="/admin/customers/new" element={<AddCustomer />} />
+          <Route path="/admin/customers/:id" element={<CustomerDetail />} />
+          <Route path="/admin/customers/:id/edit" element={<EditCustomer />} />
+          <Route path="/admin/discounts" element={<Discounts />} />
+          <Route path="/admin/discounts/new" element={<CreateDiscount />} />
+          <Route path="/admin/marketing" element={<Marketing />} />
+          <Route path="/admin/marketing/new" element={<CreateCampaign />} />
           <Route path="/admin/analytics" element={<Analytics />} />
           <Route path="/admin/settings" element={<AdminSettings />} />
         </Routes>

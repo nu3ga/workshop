@@ -13,7 +13,8 @@ import {
   Hammer, 
   Zap, 
   Factory,
-  User 
+  User,
+  Heart
 } from 'lucide-react';
 import Footer from '../components/Footer';
 import Logo from '../components/Logo';
@@ -59,6 +60,9 @@ export default function Home() {
             </div>
             
             <div className="flex items-center gap-2">
+              <Link to="/wishlist" className="hidden md:flex h-10 w-10 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 transition-colors">
+                <Heart className="w-6 h-6" />
+              </Link>
               <Link to="/profile" className="hidden md:flex h-10 w-10 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 transition-colors">
                 <User className="w-6 h-6" />
               </Link>

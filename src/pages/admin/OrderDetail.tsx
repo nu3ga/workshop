@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate, Link, useParams } from 'react-router-dom';
 import { 
   ChevronLeft, 
   Printer, 
@@ -49,6 +50,7 @@ const TimelineItem = ({ icon: Icon, title, time, isLast }: { icon: any, title: s
 
 export default function OrderDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   return (
     <AdminLayout>
@@ -136,7 +138,10 @@ export default function OrderDetail() {
                 <button className="px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold text-xs hover:bg-slate-50">
                   Refund
                 </button>
-                <button className="px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold text-xs hover:bg-slate-50">
+                <button 
+                  onClick={() => navigate(`/admin/orders/${id}/edit`)}
+                  className="px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold text-xs hover:bg-slate-50"
+                >
                   Edit Order
                 </button>
               </div>
@@ -215,7 +220,7 @@ export default function OrderDetail() {
             </Card>
 
             {/* Shipping Address */}
-            <Card title="Shipping Address" action={<button className="text-orange-600 hover:text-orange-700 font-bold text-xs">Edit</button>}>
+            <Card title="Shipping Address" action={<button onClick={() => navigate(`/admin/orders/${id}/edit`)} className="text-orange-600 hover:text-orange-700 font-bold text-xs">Edit</button>}>
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-slate-400 mt-0.5 shrink-0" />
                 <div className="text-sm font-medium text-slate-600 leading-relaxed">

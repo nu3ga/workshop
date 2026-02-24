@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   DollarSign, 
   Users, 
@@ -85,6 +86,8 @@ const StatusBadge = ({ status }: { status: string }) => {
 };
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+
   return (
     <AdminLayout>
       <div className="space-y-6 pb-12 max-w-[1600px] mx-auto">
@@ -283,7 +286,10 @@ export default function Dashboard() {
                 </div>
               ))}
             </div>
-            <button className="mt-6 w-full py-3 rounded-xl bg-slate-50 text-slate-700 text-sm font-bold hover:bg-slate-100 transition-colors border border-slate-200/50">
+            <button 
+              onClick={() => navigate('/admin/orders')}
+              className="mt-6 w-full py-3 rounded-xl bg-slate-50 text-slate-700 text-sm font-bold hover:bg-slate-100 transition-colors border border-slate-200/50"
+            >
               Manage Fulfillment
             </button>
           </div>
@@ -377,7 +383,10 @@ export default function Dashboard() {
                 <h3 className="font-extrabold text-lg text-slate-900 tracking-tight">Top Products</h3>
                 <p className="text-sm text-slate-500 font-medium mt-1">By sales volume</p>
               </div>
-              <button className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-slate-900 transition-colors flex items-center bg-white px-3 py-2 rounded-lg border border-slate-200 shadow-sm">
+              <button 
+                onClick={() => navigate('/admin/products')}
+                className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-slate-900 transition-colors flex items-center bg-white px-3 py-2 rounded-lg border border-slate-200 shadow-sm"
+              >
                 View All <ChevronRight className="w-3.5 h-3.5 ml-1" />
               </button>
             </div>
@@ -423,7 +432,10 @@ export default function Dashboard() {
                 <h3 className="font-extrabold text-lg text-slate-900 tracking-tight">Recent Orders</h3>
                 <p className="text-sm text-slate-500 font-medium mt-1">Latest transactions</p>
               </div>
-              <button className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-slate-900 transition-colors flex items-center bg-white px-3 py-2 rounded-lg border border-slate-200 shadow-sm">
+              <button 
+                onClick={() => navigate('/admin/orders')}
+                className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-slate-900 transition-colors flex items-center bg-white px-3 py-2 rounded-lg border border-slate-200 shadow-sm"
+              >
                 View All <ChevronRight className="w-3.5 h-3.5 ml-1" />
               </button>
             </div>
